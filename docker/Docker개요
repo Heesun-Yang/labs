@@ -1,0 +1,52 @@
+1. 설치
+[root@rhel72 ~]# yum install docker
+[root@rhel72 ~]# yum install bash-completion
+
+참고: https://docs.docker.com/linux/step_one/
+ 
+2. Docker Service 실행
+[root@rhel72 ~]# systemctl start docker
+
+3. 설치확인
+$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+535020c3e8ad: Pull complete
+af340544ed62: Pull complete
+Digest: sha256:a68868bfe696c00866942e8f5ca39e3e31b79c1e50feaee4ce5e28df2f051d5c
+Status: Downloaded newer image for hello-world:latest
+ 
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+ 
+To generate this message, Docker took the following steps:
+ 1. The Docker Engine CLI client contacted the Docker Engine daemon.
+ 2. The Docker Engine daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker Engine daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker Engine daemon streamed that output to the Docker Engine CLI client, which sent it
+    to your terminal.
+ 
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+ 
+Share images, automate workflows, and more with a free Docker Hub account:
+ https://hub.docker.com
+ 
+For more examples and ideas, visit:
+ https://docs.docker.com/userguide/
+  
+# hello-world 컨테이너 삭제
+[root@rhel72 dockers]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+22007cad5b1b        hello-world         "/hello"            13 seconds ago      Exited (0) 12 seconds ago                       loving_mclean
+[root@rhel72 dockers]# docker rm
+22007cad5b1bb62358d09392d5ddcde664550fd67328dcad8246f8278d452ce3  loving_mclean                                                    
+[root@rhel72 dockers]# docker rm 22007cad5b1b
+22007cad5b1b
+ 
+# hello-world 이미지 삭제
+[root@rhel72 dockers]# docker rmi docker.io/hello-world
+Untagged: docker.io/hello-world:latest
+Deleted: 70caadc460d7a99f861c2e6021547352da7fdb130bf0c3bde288cfa1c32944c4
+Deleted: b1f526347a08c63813c014adf34170c03b99029bd3e5c80ac9e3f6ed8de3758e
